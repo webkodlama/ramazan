@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramazan Ayı - Hoş Geldin Ya Şehr-i Ramazan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Amiri', serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0f0f2f 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #fff;
+        }
+html,body{
+    overflow-x: hidden;
+}
+        /* Yıldızlı Arka Plan */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Ay Animasyonu */
+        .moon-container {
+            position: fixed;
+            top: 10%;
+            right: 10%;
+            z-index: 1;
+        }
+
+        .moon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 
+                0 0 60px rgba(246, 211, 101, 0.5),
+                0 0 100px rgba(246, 211, 101, 0.3),
+                inset -20px -20px 50px rgba(0, 0, 0, 0.1);
+            animation: moonFloat 6s ease-in-out infinite;
+        }
+
+        .moon::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            top: 30px;
+            left: 25px;
+        }
+
+        .moon::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            top: 60px;
+            left: 50px;
+        }
+
+        @keyframes moonFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Cami Silueti */
+        .mosque-silhouette {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23050515' fill-opacity='0.8' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .mosque-details {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 200px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .minaret {
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            height: 150px;
+            background: linear-gradient(to bottom, #0a0a1a, #050515);
+            border-radius: 5px 5px 0 0;
+        }
+
+        .minaret::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 20px solid #0a0a1a;
+        }
+
+        .minaret.left { left: 100px; }
+        .minaret.right { right: 100px; }
+
+        .dome {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 80px;
+            background: linear-gradient(135deg, #1a1a3a 0%, #0a0a1a 100%);
+            border-radius: 50% 50% 0 0;
+        }
+
+        .dome::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 15px solid #f6d365;
+        }
+
+        /* Ana İçerik */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #f6d365 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(246, 211, 101, 0.3);
+            margin-bottom: 20px;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(246, 211, 101, 0.3)); }
+            50% { filter: drop-shadow(0 0 30px rgba(246, 211, 101, 0.6)); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 50px;
+            letter-spacing: 3px;
+        }
+
+        /* Geri Sayım Kartı */
+        /* İftar ve İmsak Sayaç Konteyner */
+        .countdown-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        /* Her iki sayaç kutusu için ortak stil */
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            animation: cardFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .countdown-box:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        /* İftar kutusu - Altın tonları */
+        .iftar-box {
+            border: 2px solid rgba(246, 211, 101, 0.4);
+            background: linear-gradient(135deg, rgba(246, 211, 101, 0.08) 0%, rgba(253, 160, 133, 0.05) 100%);
+        }
+
+        .iftar-box:hover {
+            border-color: rgba(246, 211, 101, 0.7);
+            box-shadow: 0 15px 50px rgba(246, 211, 101, 0.15);
+        }
+
+        /* İmsak kutusu - Mavi/Mor tonları */
+        .imsak-box {
+            border: 2px solid rgba(100, 149, 237, 0.4);
+            background: linear-gradient(135deg, rgba(100, 149, 237, 0.08) 0%, rgba(138, 43, 226, 0.05) 100%);
+        }
+
+        .imsak-box:hover {
+            border-color: rgba(100, 149, 237, 0.7);
+            box-shadow: 0 15px 50px rgba(100, 149, 237, 0.15);
+        }
+
+        /* İkon */
+        .countdown-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .iftar-box .countdown-icon {
+            filter: drop-shadow(0 0 20px rgba(246, 211, 101, 0.5));
+        }
+
+        .imsak-box .countdown-icon {
+            filter: drop-shadow(0 0 20px rgba(100, 149, 237, 0.5));
+        }
+
+        /* Alt başlık */
+        .countdown-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .iftar-box .countdown-subtitle {
+            color: #f6d365;
+        }
+
+        .imsak-box .countdown-subtitle {
+            color: #6495ed;
+        }
+
+        /* Vakit saati */
+        .countdown-time {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-family: 'Amiri', serif;
+        }
+
+        .iftar-box .countdown-time {
+            color: #fda085;
+            text-shadow: 0 0 20px rgba(253, 160, 133, 0.4);
+        }
+
+        .imsak-box .countdown-time {
+            color: #87ceeb;
+            text-shadow: 0 0 20px rgba(135, 206, 235, 0.4);
+        }
+
+        /* Sayı konteyner */
+        .countdown-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 18px 22px;
+            min-width: 80px;
+            transition: all 0.3s ease;
+        }
+
+        .iftar-box .time-unit {
+            border: 1px solid rgba(246, 211, 101, 0.3);
+        }
+
+        .iftar-box .time-unit:hover {
+            border-color: rgba(246, 211, 101, 0.6);
+            background: rgba(246, 211, 101, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .imsak-box .time-unit {
+            border: 1px solid rgba(100, 149, 237, 0.3);
+        }
+
+        .imsak-box .time-unit:hover {
+            border-color: rgba(100, 149, 237, 0.6);
+            background: rgba(100, 149, 237, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .time-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            display: block;
+            font-family: 'Amiri', serif;
+        }
+
+        .iftar-box .time-value {
+            color: #f6d365;
+        }
+
+        .imsak-box .time-value {
+            color: #87ceeb;
+        }
+
+        .time-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .countdown-box {
+                padding: 25px 20px;
+            }
+            
+            .countdown-icon {
+                font-size: 2.8rem;
+            }
+            
+            .countdown-time {
+                font-size: 1.6rem;
+            }
+            
+            .countdown-numbers {
+                gap: 12px;
+            }
+            
+            .time-unit {
+                min-width: 65px;
+                padding: 15px 18px;
+            }
+            
+            .time-value {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Huzur Mesajları */
+        .messages-section {
+            margin: 60px 0;
+        }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #f6d365;
+            padding: 25px 30px;
+            margin: 20px 0;
+            border-radius: 0 15px 15px 0;
+            text-align: right;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .message-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .message-card:hover {
+            background: rgba(246, 211, 101, 0.08);
+            transform: translateX(10px);
+        }
+
+        .message-arabic {
+            font-size: 1.6rem;
+            color: #f6d365;
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .message-turkish {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .message-source {
+            font-size: 0.9rem;
+            color: rgba(246, 211, 101, 0.6);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Dua Kartları */
+        .dua-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+
+        .dua-card {
+            background: linear-gradient(135deg, rgba(246, 211, 101, 0.05) 0%, rgba(253, 160, 133, 0.05) 100%);
+            border: 1px solid rgba(246, 211, 101, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dua-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(246, 211, 101, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .dua-card:hover::before {
+            left: 100%;
+        }
+
+        .dua-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(246, 211, 101, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .dua-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .dua-title {
+            font-size: 1.2rem;
+            color: #f6d365;
+            margin-bottom: 15px;
+        }
+
+        .dua-text {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* Işık Parçacıkları */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(246, 211, 101, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+        }
+
+        .footer-heart {
+            color: #fda085;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Responsive - Tablet */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 15px;
+            }
+            
+            .main-title {
+                font-size: 2.8rem;
+                line-height: 1.2;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+                margin-bottom: 30px;
+            }
+            
+            .moon-container {
+                top: 5%;
+                right: 5%;
+            }
+            
+            .moon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .mosque-silhouette {
+                height: 200px;
+            }
+            
+            .mosque-details {
+                width: 100%;
+                transform: translateX(-50%) scale(0.6);
+                bottom: -20px;
+            }
+            
+            .countdown-wrapper {
+                gap: 20px;
+                margin-bottom: 40px;
+            }
+            
+            .countdown-box {
+                padding: 25px 20px;
+            }
+            
+            .countdown-icon {
+                font-size: 2.5rem;
+            }
+            
+            .countdown-time {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-numbers {
+                gap: 10px;
+            }
+            
+            .time-unit {
+                min-width: 60px;
+                padding: 12px 15px;
+            }
+            
+            .time-value {
+                font-size: 1.6rem;
+            }
+            
+            .messages-section {
+                margin: 40px 0;
+            }
+            
+            .message-card {
+                padding: 20px;
+                margin: 15px 0;
+            }
+            
+            .message-arabic {
+                font-size: 1.3rem;
+            }
+            
+            .message-turkish {
+                font-size: 1rem;
+            }
+            
+            .dua-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 40px 0;
+            }
+            
+            .dua-card {
+                padding: 25px;
+            }
+            
+            .audio-control {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .footer {
+                padding: 30px 15px;
+            }
+        }
+        
+        /* Responsive - Mobil */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 12px;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+            
+            .subtitle {
+                font-size: 0.95rem;
+                letter-spacing: 1px;
+                margin-bottom: 25px;
+            }
+            
+            .moon-container {
+                top: 3%;
+                right: 3%;
+            }
+            
+            .moon {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .moon::before {
+                width: 12px;
+                height: 12px;
+                top: 15px;
+                left: 12px;
+            }
+            
+            .moon::after {
+                width: 8px;
+                height: 8px;
+                top: 35px;
+                left: 28px;
+            }
+            
+            .mosque-silhouette {
+                height: 150px;
+            }
+            
+            .mosque-details {
+                transform: translateX(-50%) scale(0.45);
+                bottom: -30px;
+            }
+            
+            .minaret {
+                width: 20px;
+                height: 100px;
+            }
+            
+            .dome {
+                width: 80px;
+                height: 55px;
+                bottom: 35px;
+            }
+            
+            .countdown-wrapper {
+                gap: 15px;
+                margin-bottom: 30px;
+            }
+            
+            .countdown-box {
+                padding: 20px 15px;
+                border-radius: 20px;
+            }
+            
+            .countdown-icon {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+            
+            .countdown-subtitle {
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+                margin-bottom: 8px;
+            }
+            
+            .countdown-time {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .countdown-numbers {
+                gap: 8px;
+            }
+            
+            .time-unit {
+                min-width: 50px;
+                padding: 10px 12px;
+                border-radius: 12px;
+            }
+            
+            .time-value {
+                font-size: 1.4rem;
+            }
+            
+            .time-label {
+                font-size: 0.7rem;
+            }
+            
+            .messages-section {
+                margin: 30px 0;
+            }
+            
+            .message-card {
+                padding: 18px;
+                margin: 12px 0;
+                border-left-width: 2px;
+            }
+            
+            .message-arabic {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 8px;
+            }
+            
+            .message-turkish {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+            
+            .message-source {
+                font-size: 0.8rem;
+                margin-top: 8px;
+            }
+            
+            .dua-grid {
+                gap: 15px;
+                margin: 30px 0;
+            }
+            
+            .dua-card {
+                padding: 20px;
+                border-radius: 15px;
+            }
+            
+            .dua-icon {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+            
+            .dua-title {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+            
+            .dua-text {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            
+            .audio-control {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .footer {
+                padding: 25px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .footer p:last-child {
+                font-size: 0.75rem;
+            }
+        }
+        
+        /* Responsive - Çok Küçük Ekranlar */
+        @media (max-width: 360px) {
+            .main-title {
+                font-size: 1.7rem;
+            }
+            
+            .subtitle {
+                font-size: 0.85rem;
+            }
+            
+            .countdown-box {
+                padding: 18px 12px;
+            }
+            
+            .time-unit {
+                min-width: 45px;
+                padding: 8px 10px;
+            }
+            
+            .time-value {
+                font-size: 1.2rem;
+            }
+            
+            .message-arabic {
+                font-size: 1rem;
+            }
+        }
+
+        /* Yüzen Fenerler */
+        .lanterns {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .lantern {
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            background: linear-gradient(to bottom, #f6d365 0%, #fda085 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0.7;
+            animation: lanternFloat 20s infinite ease-in-out;
+            box-shadow: 0 0 20px rgba(246, 211, 101, 0.5);
+        }
+
+        .lantern::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 8px;
+            background: #8b4513;
+            border-radius: 3px;
+        }
+
+        .lantern::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background: rgba(246, 211, 101, 0.5);
+        }
+
+        @keyframes lanternFloat {
+            0%, 100% {
+                transform: translateY(100vh) rotate(-5deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(5deg);
+                opacity: 0;
+            }
+        }
+
+        /* Ses Kontrolü */
+        .audio-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: rgba(246, 211, 101, 0.2);
+            border: 1px solid rgba(246, 211, 101, 0.4);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .audio-control:hover {
+            background: rgba(246, 211, 101, 0.4);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Yıldızlar -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Işık Parçacıkları -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Yüzen Fenerler -->
+    <div class="lanterns" id="lanterns"></div>
+
+    <!-- Ay -->
+    <div class="moon-container">
+        <div class="moon"></div>
+    </div>
+
+    <!-- Cami Silueti -->
+    <div class="mosque-silhouette"></div>
+    <div class="mosque-details">
+        <div class="minaret left"></div>
+        <div class="minaret right"></div>
+        <div class="dome"></div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="container">
+        <h1 class="main-title">Hoş Geldin Ya Şehr-i Ramazan</h1>
+        <p class="subtitle">Rahmet, Bereket ve Mağfiret Ayı</p>
+
+        <!-- İftar ve İmsak Sayacı -->
+        <div class="countdown-wrapper" id="countdownWrapper">
+            <!-- İftar Sayacı -->
+            <div class="countdown-box iftar-box">
+                <div class="countdown-icon">🌙</div>
+                <div class="countdown-subtitle">İftara Kalan Süre</div>
+                <div class="countdown-time" id="iftarTime">18:51</div>
+                <div class="countdown-numbers" id="iftarCountdown">
+                    <div class="time-unit">
+                        <span class="time-value" id="iftarHours">00</span>
+                        <span class="time-label">Saat</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="iftarMinutes">00</span>
+                        <span class="time-label">Dakika</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="iftarSeconds">00</span>
+                        <span class="time-label">Saniye</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İmsak Sayacı -->
+            <div class="countdown-box imsak-box">
+                <div class="countdown-icon">🌅</div>
+                <div class="countdown-subtitle">Sahura (İmsak) Kalan Süre</div>
+                <div class="countdown-time" id="imsakTime">06:21</div>
+                <div class="countdown-numbers" id="imsakCountdown">
+                    <div class="time-unit">
+                        <span class="time-value" id="imsakHours">00</span>
+                        <span class="time-label">Saat</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="imsakMinutes">00</span>
+                        <span class="time-label">Dakika</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="imsakSeconds">00</span>
+                        <span class="time-label">Saniye</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Huzur Mesajları -->
+        <div class="messages-section">
+            <div class="message-card">
+                <div class="message-arabic">شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ</div>
+                <div class="message-turkish">"Ramazan ayı, insanlara yol gösterici, doğrunun ve doğrudan ayırıcının açık delilleri olarak Kur'an'ın indirildiği aydır."</div>
+                <div class="message-source">- Bakara Suresi, 185</div>
+            </div>
+
+            <div class="message-card">
+                <div class="message-arabic">مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ</div>
+                <div class="message-turkish">"Kim Ramazan ayını iman ederek ve karşılığını Allah'tan umarak oruç tutarsa, geçmiş günahları bağışlanır."</div>
+                <div class="message-source">- Buhari & Müslim</div>
+            </div>
+
+            <div class="message-card">
+                <div class="message-arabic">إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ</div>
+                <div class="message-turkish">"Ameller niyetlere göredir." Her işin değeri, o işi yapma niyetine bağlıdır. Bu mübarek ayda kalbimizi güzelleştirelim.</div>
+                <div class="message-source">- Buhari & Müslim</div>
+            </div>
+        </div>
+
+        <!-- Dua Kartları -->
+        <div class="dua-grid">
+            <div class="dua-card">
+                <div class="dua-icon">🤲</div>
+                <div class="dua-title">İftar Duası</div>
+                <div class="dua-text">"Allahümme leke sumtü ve bike âmentü ve aleyke tevekkeltü ve alâ rızkike eftartü."<br><br>
+                <em>"Allah'ım! Senin için oruç tuttum, sana iman ettim, sana tevekkül ettim ve senin rızkınla iftar ettim."</em></div>
+            </div>
+
+            <div class="dua-card">
+                <div class="dua-icon">🌟</div>
+                <div class="dua-title">Sahur Duası</div>
+                <div class="dua-text">"Allahümme aînî alâ zikrike ve şükrike ve husni ibadetike"<br><br>
+                <em>"Allah'ım! Sana zikretmek, şükretmek ve güzel bir şekilde ibadet etmek için bana yardım et."</em></div>
+            </div>
+
+            <div class="dua-card">
+                <div class="dua-icon">🕌</div>
+                <div class="dua-title">Teravih Duası</div>
+                <div class="dua-text">"Allahümme innâ nesteînüke ve nestağfirüke ve nestehdîk."<br><br>
+                <em>"Allah'ım! Senden yardım dileriz, bağışlanmayı senden isteriz, hidayeti senden talep ederiz."</em></div>
+            </div>
+
+            <div class="dua-card">
+                <div class="dua-icon">📿</div>
+                <div class="dua-title">Kadir Gecesi Duası</div>
+                <div class="dua-text">"Allahümme inneke afüvvün kerîmün tühibbül-afve fâfu annî."<br><br>
+                <em>"Allah'ım! Şüphesiz sen affedicisin, kerem sahibisin, affetmeyi seversin, beni de affet."</em></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Hayırlı Ramazanlar <span class="footer-heart">🌙</span></p>
+        <p style="margin-top: 10px; font-size: 0.85rem;">Bu mübarek ay huzur, barış ve bereket getirsin</p>
+    </div>
+
+    <!-- Arka Plan Müziği -->
+    <audio id="bgMusic" loop>
+        <!-- Rahatlatıcı Ney Sesi - Otomatik başlamaz, kullanıcı kontrol eder -->
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=relaxing-mountains-rivers-streams-running-water-18178.mp3" type="audio/mpeg">
+        <!-- Alternatif: Sakin Piyano -->
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c8c8a73467.mp3?filename=soft-piano-100-bpm-121529.mp3" type="audio/mpeg">
+        Tarayıcınız audio elementini desteklemiyor.
+    </audio>
+
+    <!-- Ses Kontrolü -->
+    <div class="audio-control" id="audioControl" title="Rahatlatıcı Müzik Çal">🎵</div>
+
+    <script>
+        // Yıldızları oluştur
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                const size = Math.random() * 2 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Işık parçacıkları oluştur
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Fenerleri oluştur
+        function createLanterns() {
+            const lanternsContainer = document.getElementById('lanterns');
+            const lanternCount = 5;
+
+            for (let i = 0; i < lanternCount; i++) {
+                const lantern = document.createElement('div');
+                lantern.className = 'lantern';
+                lantern.style.left = (Math.random() * 80 + 10) + '%';
+                lantern.style.animationDelay = (i * 4) + 's';
+                lantern.style.animationDuration = (20 + Math.random() * 10) + 's';
+                lanternsContainer.appendChild(lantern);
+            }
+        }
+
+        // 2026 Ramazan İftar ve Sahur Vakitleri - İstanbul
+        // 19 Şubat - 20 Mart 2026 (Bugün 19 Şubat = 1. Gün)
+        const istanbulIftarSaatleri = {
+            '2026-02-19': { iftar: '18:51', imsak: '06:22', day: 1 },  // Bugün - 1. Gün
+            '2026-02-20': { iftar: '18:52', imsak: '06:21', day: 2 },
+            '2026-02-21': { iftar: '18:53', imsak: '06:19', day: 3 },
+            '2026-02-22': { iftar: '18:54', imsak: '06:18', day: 4 },
+            '2026-02-23': { iftar: '18:55', imsak: '06:17', day: 5 },
+            '2026-02-24': { iftar: '18:57', imsak: '06:15', day: 6 },
+            '2026-02-25': { iftar: '18:58', imsak: '06:14', day: 7 },
+            '2026-02-26': { iftar: '18:59', imsak: '06:12', day: 8 },
+            '2026-02-27': { iftar: '19:00', imsak: '06:11', day: 9 },
+            '2026-02-28': { iftar: '19:01', imsak: '06:09', day: 10 },
+            '2026-03-01': { iftar: '19:02', imsak: '06:08', day: 11 },
+            '2026-03-02': { iftar: '19:04', imsak: '06:06', day: 12 },
+            '2026-03-03': { iftar: '19:05', imsak: '06:05', day: 13 },
+            '2026-03-04': { iftar: '19:06', imsak: '06:03', day: 14 },
+            '2026-03-05': { iftar: '19:07', imsak: '06:02', day: 15 },
+            '2026-03-06': { iftar: '19:08', imsak: '06:00', day: 16 },
+            '2026-03-07': { iftar: '19:09', imsak: '05:59', day: 17 },
+            '2026-03-08': { iftar: '19:10', imsak: '05:57', day: 18 },
+            '2026-03-09': { iftar: '19:11', imsak: '05:55', day: 19 },
+            '2026-03-10': { iftar: '19:13', imsak: '05:54', day: 20 },
+            '2026-03-11': { iftar: '19:14', imsak: '05:52', day: 21 },
+            '2026-03-12': { iftar: '19:15', imsak: '05:50', day: 22 },
+            '2026-03-13': { iftar: '19:16', imsak: '05:49', day: 23 },
+            '2026-03-14': { iftar: '19:17', imsak: '05:47', day: 24 },
+            '2026-03-15': { iftar: '19:18', imsak: '05:45', day: 25 },
+            '2026-03-16': { iftar: '19:19', imsak: '05:43', day: 26 },
+            '2026-03-17': { iftar: '19:20', imsak: '05:42', day: 27 },
+            '2026-03-18': { iftar: '19:21', imsak: '05:40', day: 28 },
+            '2026-03-19': { iftar: '19:22', imsak: '05:38', day: 29 },
+            '2026-03-20': { iftar: '19:24', imsak: '05:36', day: 30 }
+        };
+        
+        const RAMAZAN_START = new Date('2026-02-19');
+        const RAMAZAN_END = new Date('2026-03-20');
+        
+        // İstanbul için iftar/imsak saatlerini getir
+        function calculatePrayerTimes(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const dateKey = `${year}-${month}-${day}`;
+            
+            const data = istanbulIftarSaatleri[dateKey];
+            if (!data) return null;
+            
+            return {
+                iftar: data.iftar,
+                imsak: data.imsak,
+                dayOfRamadan: data.day
+            };
+        }
+
+        // Tarihi YYYY-MM-DD formatına çevir
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        // Saat stringini Date objesine çevir
+        function parseTime(date, timeStr) {
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            const result = new Date(date);
+            result.setHours(hours, minutes, 0, 0);
+            return result;
+        }
+
+        // İki ayrı sayaç için zaman hesaplama
+        function updateCountdown() {
+            let now = new Date();
+            
+            // TEST: Bugünü 20 Mart 2025 olarak ayarla (imsak 06:21)
+            // now = new Date('2025-03-20T12:00:00');
+            
+            const todayData = calculatePrayerTimes(now);
+            
+            if (!todayData) {
+                // Ramazan dışı - özel mesaj göster
+                const wrapper = document.getElementById('countdownWrapper');
+                if (now < RAMAZAN_2025_START) {
+                    const diff = RAMAZAN_START - now;
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    wrapper.innerHTML = `
+                        <div class="countdown-box" style="text-align: center;">
+                            <div class="countdown-icon">📅</div>
+                            <div class="countdown-subtitle" style="color: #f6d365;">Ramazan-ı Şerif Başlıyor</div>
+                            <div class="countdown-time" style="color: #fda085; font-size: 2.5rem;">${days} Gün Kaldı</div>
+                        </div>
+                    `;
+                } else {
+                    wrapper.innerHTML = `
+                        <div class="countdown-box" style="text-align: center;">
+                            <div class="countdown-icon">🎉</div>
+                            <div class="countdown-subtitle" style="color: #f6d365;">Ramazan Sona Erdi</div>
+                            <div class="countdown-time" style="color: #fda085;">Bayramınız Mübarek 🌙❤️🕌</div>
+                        </div>
+                    `;
+                }
+                return;
+            }
+            
+            // Bugünün iftar ve imsak saatlerini göster
+            const iftarTimeEl = document.getElementById('iftarTime');
+            const imsakTimeEl = document.getElementById('imsakTime');
+            const iftarHoursEl = document.getElementById('iftarHours');
+            const iftarMinutesEl = document.getElementById('iftarMinutes');
+            const iftarSecondsEl = document.getElementById('iftarSeconds');
+            const imsakHoursEl = document.getElementById('imsakHours');
+            const imsakMinutesEl = document.getElementById('imsakMinutes');
+            const imsakSecondsEl = document.getElementById('imsakSeconds');
+            
+            if (!iftarTimeEl || !imsakTimeEl) return; // Elementler yoksa çık
+            
+            iftarTimeEl.textContent = todayData.iftar;
+            imsakTimeEl.textContent = todayData.imsak;
+            
+            // İftar ve imsak zamanlarını hesapla
+            let iftarTime = parseTime(now, todayData.iftar);
+            let imsakTime = parseTime(now, todayData.imsak);
+            
+            // İftar geçtiyse, yarınki iftara hesapla
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowData = calculatePrayerTimes(tomorrow);
+            
+            let iftarDiff = iftarTime - now;
+            let imsakDiff = imsakTime - now;
+            
+            // İftar geçtiyse yarınki iftara geç
+            if (iftarDiff < 0 && tomorrowData) {
+                iftarTime = parseTime(tomorrow, tomorrowData.iftar);
+                iftarDiff = iftarTime - now;
+                iftarTimeEl.textContent = tomorrowData.iftar + ' (Yarın)';
+            }
+            
+            // İmsak geçtiyse yarınki imsaka geç
+            if (imsakDiff < 0 && tomorrowData) {
+                imsakTime = parseTime(tomorrow, tomorrowData.imsak);
+                imsakDiff = imsakTime - now;
+                imsakTimeEl.textContent = tomorrowData.imsak + ' (Yarın)';
+            }
+            
+            // İftar sayacını güncelle
+            const iftarHours = Math.floor(iftarDiff / (1000 * 60 * 60));
+            const iftarMinutes = Math.floor((iftarDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const iftarSeconds = Math.floor((iftarDiff % (1000 * 60)) / 1000);
+            
+            iftarHoursEl.textContent = String(Math.abs(iftarHours)).padStart(2, '0');
+            iftarMinutesEl.textContent = String(Math.abs(iftarMinutes)).padStart(2, '0');
+            iftarSecondsEl.textContent = String(Math.abs(iftarSeconds)).padStart(2, '0');
+            
+            // İmsak sayacını güncelle
+            const imsakHours = Math.floor(imsakDiff / (1000 * 60 * 60));
+            const imsakMinutes = Math.floor((imsakDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const imsakSeconds = Math.floor((imsakDiff % (1000 * 60)) / 1000);
+            
+            imsakHoursEl.textContent = String(Math.abs(imsakHours)).padStart(2, '0');
+            imsakMinutesEl.textContent = String(Math.abs(imsakMinutes)).padStart(2, '0');
+            imsakSecondsEl.textContent = String(Math.abs(imsakSeconds)).padStart(2, '0');
+        }
+
+        // Mesaj kartlarını animasyonla göster
+        function animateMessages() {
+            const cards = document.querySelectorAll('.message-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 200);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            cards.forEach(card => observer.observe(card));
+        }
+
+        // Dua kartlarını animasyonla göster
+        function animateDuaCards() {
+            const cards = document.querySelectorAll('.dua-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '0';
+                            entry.target.style.transform = 'translateY(30px)';
+                            entry.target.style.transition = 'all 0.6s ease';
+                            
+                            setTimeout(() => {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                            }, 50);
+                        }, index * 150);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                observer.observe(card);
+            });
+        }
+
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            createParticles();
+            createLanterns();
+            updateCountdown();
+            animateMessages();
+            animateDuaCards();
+            
+            // Her saniye geri sayımı güncelle
+            setInterval(updateCountdown, 1000);
+
+            // Ses kontrolü
+            const audioControl = document.getElementById('audioControl');
+            const bgMusic = document.getElementById('bgMusic');
+            let isPlaying = false;
+            
+            // Ses seviyesini ayarla (düşük ses - huzur verici)
+            bgMusic.volume = 0.3;
+            
+            audioControl.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                
+                if (isPlaying) {
+                    bgMusic.play().catch(err => {
+                        console.log('Ses çalınamadı:', err);
+                        isPlaying = false;
+                        audioControl.textContent = '❌';
+                        audioControl.title = 'Ses yüklenemedi';
+                        return;
+                    });
+                    audioControl.textContent = '🔇';
+                    audioControl.title = 'Müziği Durdur';
+                    audioControl.style.background = 'rgba(246, 211, 101, 0.5)';
+                } else {
+                    bgMusic.pause();
+                    audioControl.textContent = '🎵';
+                    audioControl.title = 'Rahatlatıcı Müzik Çal';
+                    audioControl.style.background = 'rgba(246, 211, 101, 0.2)';
+                }
+            });
+        });
+
+        // Paralaks efekti
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+
+            const moon = document.querySelector('.moon');
+            if (moon) {
+                moon.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px)`;
+            }
+
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                const speed = (index % 5 + 1) * 0.5;
+                star.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
